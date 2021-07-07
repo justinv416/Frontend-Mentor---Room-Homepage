@@ -1,0 +1,410 @@
+:root {
+    --dark-grey: hsl(0, 0%, 63%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --very-dark-grey: hsl(0, 0%, 27%);
+}
+
+/* Reset */
+* {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Spartan', sans-serif;;
+}
+
+/* Global */
+a {
+  text-decoration: none; 
+  color: var(--black); 
+}
+
+a:visited {
+    color: var(--black);
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    color: var(--white);
+    text-transform: lowercase;
+}
+
+/* Overlay effect */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* Grid */
+.grid-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+/* Grid Items */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item-1 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    grid-column: 1 / 9;
+    grid-row: 1 / 9;
+}
+
+.grid-item-2 {
+    background-color: var(--white);
+    grid-column: 9 / 15;
+    grid-row: 1 / 9;
+    position: relative;
+}
+
+.grid-item-3 {
+    grid-column: 1 / 5;
+    grid-row: 9 / 13;
+}
+
+.grid-item-4 {
+    background-color: var(--white);
+    grid-column: 5 / 11;
+    grid-row: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grid-item-5 {
+    grid-column: 11 / 15;
+    grid-row: 9 / 13;
+}
+
+/* Main */
+
+.hero-image {
+    height: 100%;
+    width: 100%;
+}
+
+.main-heading {
+    font-size: 3vw;
+}
+
+.main-content {
+    margin: 40px 0;
+    line-height: 20px;
+    color: var(--dark-grey);
+}
+
+.content-wrap {
+    padding: 50px;
+}
+
+/* Nav Elements */
+.nav {
+    position: absolute;
+    z-index: 2;
+    top: 60px;
+    left: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+}
+
+.logo {
+    height: 17px;
+}
+
+.mobile-logo {
+    position: absolute;
+    top: 10%;
+    display: none;
+}
+
+.icon-hamburger {
+    display: none;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover::after {
+    content: '';
+    position: absolute;
+    background-color: var(--white);
+    height: 2px;
+    bottom: 0;
+    top: 20px;
+    right: 0;
+    animation: expand .5s forwards;
+}
+
+/* Links */
+.link-container {
+    display: flex;
+    align-items: center;
+}
+
+.shop-now-link {
+    font-size: 1.5rem;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.shop-now-link:hover {
+    color: var(--dark-grey);
+}
+
+.shop-now-link:hover + .shop-now-arrow{
+    fill: var(--dark-grey);
+}
+
+.shop-now-arrow {
+    height: 1vw;
+    margin-left: 50px;
+}
+
+/* Buttons */
+.button-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+}
+
+.mobile-button-container {
+    display: none;
+}
+
+.button-right, .button-left,
+.mobile-button-left, .mobile-button-right {
+    background-color: var(--black);
+    border: none;
+    height: 70px;
+    width: 70px;
+}
+
+.button-right:hover, 
+.button-left:hover,
+.mobile-button-left:hover,
+.mobile-button-right:hover {
+    background-color: var(--very-dark-grey);
+}
+
+/* About Section */
+.about-content-wrap {
+    padding: 40px;
+}
+
+.about-image {
+    height: 100%;
+    width: 100%;
+}
+
+.about-heading {
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.about-content {
+    color: var(--dark-grey);
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+/* Animations */
+@keyframes expand {
+    from {
+        width: 0%;
+    } to {
+        width: 100%;
+    }
+}
+
+.block {
+    display: block;
+}
+
+/* Media Queries */
+@media screen and (min-width: 900px) {
+    .mobile-nav {
+        display: none
+    }
+
+    .overlay {
+        display: none !important;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    .icon-close {
+        display: none;
+    }
+
+    .hero-image-mobile {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 900px){
+    .grid-container {
+        display: block;
+        height: auto;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .mobile-logo {
+        display: block;
+        z-index: 3;
+    }
+
+    /* Nav elements */
+    .nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: none;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+        z-index: 4;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .overlay {
+        display: none;
+    }
+    
+    .mobile-nav-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: white;
+        color: black;
+        width: 100%;
+        height: 100%;
+    }
+
+    .mobile-nav-item {
+        color: black;
+        font-weight: 700;
+    }
+
+    .hero-image {
+        position: relative;
+    }
+
+    .hero-image-mobile {
+        display: none;
+    }
+
+    .icon-hamburger {
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        z-index: 3;
+    }
+
+    .button-container {
+        display: none;
+    }
+
+    .mobile-button-container {
+        position: absolute;
+        display: flex;
+        right: 0;
+        bottom: 0;
+    }
+
+    .shop-now-link {
+        font-size: 1rem;
+    }
+
+    .shop-now-arrow {
+        height: 20px;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .about-heading {
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .grid-item-2 {
+        height: 400px;
+    }
+
+    .grid-item-4 {
+        height: 300px;
+    }
+}
+
+/* Smartphones */
+@media screen and (max-width: 480px) {
+    .content-wrap {
+        padding: 30px;
+    }
+
+    .hero-image {
+        display: none;
+    }
+
+    .hero-image-mobile {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin: 10px 0 50px 0;
+    }
+
+    .main-heading {
+        font-size: 2rem;
+    }
+
+    .about-heading {
+        font-size: 1rem;
+    }
+
+    .shop-now-link {
+        font-size: 1rem;
+    }
+}
